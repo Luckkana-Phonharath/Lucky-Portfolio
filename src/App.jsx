@@ -1,11 +1,14 @@
-function App() {
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './pages/home';
+import { MainLayout } from './components/layout/main-layout';
+
+
+export default function App() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white flex items-center justify-center">
-      <h1 className="text-5xl font-bold text-blue-500">
-        Lucky Phonharath
-      </h1>
-    </main>
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;

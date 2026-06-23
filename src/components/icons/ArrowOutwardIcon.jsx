@@ -1,20 +1,19 @@
-const ArrowOutwardIcon = ({
-  size = 16,
-  fill = 'currentColor',
-  fillOpacity = 1,
-  ...props
-}) => (
+const ArrowOutwardIcon = ({ size = 16, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
-    fill={fill}
-    fillOpacity={fillOpacity}
     viewBox="0 0 24 24"
-    data-slot="icon"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     {...props}
   >
-    <path d="m243-240-51-51 405-405H240v-72h480v480h-72v-357L243-240Z"/>
+    <path d="M7 17L17 7" />
+    <path d="M9 7H17V15" />
   </svg>
 );
+
 export default ArrowOutwardIcon;

@@ -136,3 +136,28 @@ a {
     width: min(100% - 28px, 1120px);
   }
 }
+
+.nav-link-enter {
+  opacity: 0;
+  transform: translateY(-12px);
+  animation: navFadeIn 0.5s ease forwards;
+}
+
+@keyframes navFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
