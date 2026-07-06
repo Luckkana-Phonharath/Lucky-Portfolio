@@ -8,3 +8,7 @@ export { default as CheckIcon } from './CheckIcon';
 export { default as CheckIconFill } from './CheckIconFill';
 export { default as CheckCircleIcon } from './CheckCircleIcon';
 export { default as AvailableIcon } from './AvailableIcon';
+export { default as StarIcon} from './StarIcon'
+export { default as LocationIcon} from './LocationIcon'
+export { default as GithubIcon} from './GithubIcon';
+export { default as LinkedInIcon} from './LinkedInIcon';

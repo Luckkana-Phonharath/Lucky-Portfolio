@@ -1,18 +1,39 @@
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ArrowOutwardIcon } from '../icons';
+import { Button } from '../button';
 
 const navLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
-  { name: 'Work', path: '/projects' },
-  { name: 'Skills', path: '/skills' },
+  { name: 'Work', path: '/work' },
   { name: 'Contact', path: '/contact' },
 ];
 
 export function NavBar() {
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 20);
+    }
+
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#050814]/80 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+     <header
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? 'border-b border-white/10 bg-[#050814]/80 backdrop-blur-xl'
+          : 'border-b border-transparent bg-transparent'
+      }`}
+    >
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
         <NavLink
           to="/"
           className="nav-link-enter text-2xl font-bold text-white"
@@ -52,15 +73,16 @@ export function NavBar() {
             </NavLink>
           ))}
         </div>
-
-        <NavLink
-          to="/contact"
-          className="nav-link-enter group flex items-center gap-1 rounded-full border border-blue-500/40 px-5 py-2 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-500/10 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)]"
-          style={{ animationDelay: `${(navLinks.length + 1) * 120}ms` }}
-        >
-          Let’s Talk
-          <ArrowOutwardIcon className="h-4 w-4 text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </NavLink>
+          <Button
+            to="/contact"
+            variant="outline"
+            shape="rounded"
+            icon={ArrowOutwardIcon}
+            className="nav-link-enter"
+            style={{ animationDelay: `${(navLinks.length + 1) * 120}ms` }}
+          >
+            Let’s Talk
+          </Button>
       </nav>
     </header>
   );
